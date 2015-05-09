@@ -1,4 +1,5 @@
 using System;
+using ApplicationServices;
 using ApplicationServices.Interfaces;
 using ApplicationServices.Services;
 using Castle.MicroKernel.Registration;
@@ -29,6 +30,7 @@ namespace IGeoliseWebApplication.App_Start
 
             container.Register(Component.For(typeof(IGeoCodeService)).ImplementedBy(typeof(GeoCodeService)));
             container.Register(Component.For(typeof(ITravelTimeService)).ImplementedBy(typeof(TravelTimeService)));
+            container.Register(Component.For(typeof(IAppSettingsService)).ImplementedBy(typeof(AppSettingsService)));
 
 
             return new ContainerBootstrapper(container);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,6 +20,17 @@ namespace ApplicationServices.Tests
         TravelTimeQuery travelTimeQuery = new TravelTimeQuery();
         Task<string> travelTimeJson;
         private TravelTimeService travelTimeService = new TravelTimeService(new GeoCodeService(), new HttpClient());
+
+        //[SetUp]
+        //public void setUp()
+        //{
+        //    var fakeResponseHandler = new FakeResponseHandler();
+        //    var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+        //    responseMessage.Content = new StringContent(@"{}");
+        //    fakeResponseHandler.AddFakeResponse(new Uri("http://api.traveltimeapp.com/v2/time_filter"), responseMessage);
+        //    var httpClient = new HttpClient(fakeResponseHandler);
+        //    travelTimeService = new TravelTimeService(new GeoCodeService(), new AppSettingsService(),  httpClient);
+        //}
 
         public void GivenTravelTimeQueryHasAJobLoaction()
         {
