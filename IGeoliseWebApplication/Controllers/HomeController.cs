@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+
 
 namespace IGeoliseWebApplication.Controllers
 {
@@ -10,9 +7,6 @@ namespace IGeoliseWebApplication.Controllers
     {
         public ActionResult Index()
         {
-            var s = new AppSettingsService();
-            var sss = s.GetSettingAs<string>("IGeoliseTimeFilterApiUri");
-
             return View();
         }
 

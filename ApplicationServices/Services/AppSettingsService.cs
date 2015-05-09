@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Web.Http;
 
-namespace IGeoliseWebApplication
+namespace ApplicationServices.Services
 {
     public interface IAppSettingsService
     {
