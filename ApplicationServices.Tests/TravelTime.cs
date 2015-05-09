@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ApplicationServices.Dtos;
+using ApplicationServices.QueryMapper;
 using ApplicationServices.QueryObjects;
 using ApplicationServices.Services;
 using NUnit.Framework;
@@ -19,7 +20,7 @@ namespace ApplicationServices.Tests
     {
         TravelTimeQuery travelTimeQuery = new TravelTimeQuery();
         Task<string> travelTimeJson;
-        private TravelTimeService travelTimeService = new TravelTimeService(new GeoCodeService(), new HttpClient());
+        private TravelTimeService travelTimeService = new TravelTimeService(new GeoCodeService(), new HttpClient(), new TravelTimeApiQueryMapper());
 
         //[SetUp]
         //public void setUp()

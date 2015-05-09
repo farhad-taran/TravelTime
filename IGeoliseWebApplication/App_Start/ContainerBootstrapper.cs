@@ -1,6 +1,7 @@
 using System;
 using ApplicationServices;
 using ApplicationServices.Interfaces;
+using ApplicationServices.QueryMapper;
 using ApplicationServices.Services;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -31,6 +32,9 @@ namespace IGeoliseWebApplication.App_Start
             container.Register(Component.For(typeof(IGeoCodeService)).ImplementedBy(typeof(GeoCodeService)));
             container.Register(Component.For(typeof(ITravelTimeService)).ImplementedBy(typeof(TravelTimeService)));
             container.Register(Component.For(typeof(IAppSettingsService)).ImplementedBy(typeof(AppSettingsService)));
+            container.Register(AllTypes.FromAssemblyContaining<TravelTimeApiQueryMapper>()
+               .BasedOn(typeof(IMapper<,>))
+               .WithService.AllInterfaces());
 
 
             return new ContainerBootstrapper(container);
