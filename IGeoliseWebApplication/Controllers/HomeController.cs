@@ -10,6 +10,9 @@ namespace IGeoliseWebApplication.Controllers
     {
         public ActionResult Index()
         {
+            var s = new AppSettingsService();
+            var sss = s.GetSettingAs<string>("IGeoliseTimeFilterApiUri");
+
             return View();
         }
 

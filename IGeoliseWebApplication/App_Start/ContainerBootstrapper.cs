@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using ApplicationServices;
 using ApplicationServices.Interfaces;
 using ApplicationServices.QueryMapper;
@@ -27,8 +28,9 @@ namespace IGeoliseWebApplication.App_Start
         public static ContainerBootstrapper Bootstrap()
         {
             var container = new WindsorContainer().
-                Install(FromAssembly.This(),new HttpClientInstaller());
+                Install(FromAssembly.This());
 
+            container.Register(Component.For(typeof(HttpClient)).UsingFactoryMethod(() => new HttpClient()).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IGeoCodeService)).ImplementedBy(typeof(GeoCodeService)));
             container.Register(Component.For(typeof(ITravelTimeService)).ImplementedBy(typeof(TravelTimeService)));
             container.Register(Component.For(typeof(IAppSettingsService)).ImplementedBy(typeof(AppSettingsService)));

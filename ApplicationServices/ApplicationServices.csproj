@@ -50,9 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettingsService.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Dtos\TravelTimeDto.cs" />
     <Compile Include="Interfaces\IGeoCodeService.cs" />
     <Compile Include="Interfaces\ITravelTimeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
