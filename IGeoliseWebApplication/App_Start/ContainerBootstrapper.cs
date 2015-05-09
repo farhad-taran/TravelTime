@@ -1,6 +1,10 @@
 using System;
+using ApplicationServices.Interfaces;
+using ApplicationServices.Services;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using IGeoliseWebApplication.Installers;
 
 namespace IGeoliseWebApplication.App_Start
 {
@@ -21,7 +25,12 @@ namespace IGeoliseWebApplication.App_Start
         public static ContainerBootstrapper Bootstrap()
         {
             var container = new WindsorContainer().
-                Install(FromAssembly.This());
+                Install(FromAssembly.This(),new HttpClientInstaller());
+
+            container.Register(Component.For(typeof(IGeoCodeService)).ImplementedBy(typeof(GeoCodeService)));
+            container.Register(Component.For(typeof(ITravelTimeService)).ImplementedBy(typeof(TravelTimeService)));
+
+
             return new ContainerBootstrapper(container);
         }
 
