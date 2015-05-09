@@ -20,7 +20,7 @@ namespace ApplicationServices.Tests
     {
         TravelTimeQuery travelTimeQuery = new TravelTimeQuery();
         Task<string> travelTimeJson;
-        private TravelTimeService travelTimeService = new TravelTimeService(new GeoCodeService(), new HttpClient(), new TravelTimeApiQueryMapper());
+        private TravelTimeService travelTimeService = new TravelTimeService(new GeoCodeService(new HttpClient()), new HttpClient(), new TravelTimeApiQueryMapper());
 
         //[SetUp]
         //public void setUp()
@@ -40,13 +40,13 @@ namespace ApplicationServices.Tests
 
         public void AndGivenTravelTimeQueryHasValidCandidatePostCodes()
         {
-            travelTimeQuery.CandidatePostCodes = new Dictionary<int, string>()
+            travelTimeQuery.CandidatePostCodes = new List<KeyValuePair<int, string>>()
             {
-                {1,"wc2b5lx"},
-                {2,"sg138eb"},
-                {3,"ec2m5up"},
-                {4,"sw1w8el"},
-                {5,"e3 2qh"}
+                new KeyValuePair<int, string>(1,"wc2b5lx"),
+                new KeyValuePair<int, string>(5,"e32qh"),
+                new KeyValuePair<int, string>(4,"sw1w8el"),
+                new KeyValuePair<int, string>(3,"ec2m5up"),
+                new KeyValuePair<int, string>(2,"sg138eb")
             };
         }
 

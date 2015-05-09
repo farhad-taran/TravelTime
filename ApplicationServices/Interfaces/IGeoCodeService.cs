@@ -8,7 +8,7 @@ namespace ApplicationServices.Interfaces
 {
     public interface IGeoCodeService
     {
-        Dictionary<int,double[]> GetGeoCodes(Dictionary<int,string> postcodes);
+        Task<Dictionary<int,double[]>> GetPostCodesGeoCodes(List<KeyValuePair<int,string>> postcodes);
         double[] GetJobLocationGeoCode(string jobLocation);
     }
 }
